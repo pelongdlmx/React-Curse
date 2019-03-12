@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div class="container">
+            <h3>HomeWork #2</h3>
+            <p>Insert your data:</p>
+            <input type="text" id="input"><br><br>
+            <input type="button" value="Show Data" onclick="showData()" id="showData">
+        </div>
+        <div class="container" id="writeData"></div>
+        
+
+    <script type="text/javascript">
+        var htmlText = "";
+        var string = []; 
+        window.onload = function(){
+            document.getElementById("showData").disabled = true;
+            getData(); 
+        }
+
+        function getData(){
+        
+            var url = "https://www.nxp.com/webapp/taxonomyservice/productTaxonomy.sp?root=1&depth=all" 
+            fetch(url)
+            .then(jsonData => jsonData.json())
+            .then(jsonData => {
+                console.log(jsonData.data)
+                string = jsonData.data[0]; 
+                document.getElementById("showData").disabled = false
+            }); 
+            return true; 
+        }
+
+        function showData(){
+            htmlText = ""; 
+            searchValue = document.getElementById("input").value; 
+            searchValueUC = searchValue.toUpperCase(); 
+          
+            function iterativeFunction(taxonomyData){
+                if(taxonomyData.attr.webpageUrl){
+                    n = taxonomyData.attr.webpageUrl.search(searchValueUC) 
+                }
+                var codeid = ""; 
+                var name = taxonomyData.attr.name 
+                var metaId = taxonomyData.attr.id
+                if(taxonomyData.attr.webpageUrl){
+                    codeid = taxonomyData.attr.webpageUrl.split(":")
+                    codeid = codeid[1].toUpperCase(); 
+                }
+                if(n != -1){
+                    htmlText += "<ul>"
+                    htmlText += '<li><a href="$AUTOLINK[' + metaId + ':p]">' + name + '<\/a>' + ' || ' + name + ' :' + codeid
+                    
+                    if(taxonomyData.children){
+                        
+                        for(var i=0; i<taxonomyData.children.length; i++){
+                            iterativeFunction2(taxonomyData.children[i]);
+                        }
+                        htmlText += "</li></ul>"
+                    }
+                }else{
+                    if(taxonomyData.children){
+                        for(var i=0; i<taxonomyData.children.length; i++){
+                            iterativeFunction(taxonomyData.children[i]);
+                        }
+                    }
+                }
+                
+            }
+        
+            var taxonomy = string;
+            if(taxonomy.children.length > 0){
+                iterativeFunction(taxonomy);
+            }
+
+            function iterativeFunction2(taxonomyData){
+                if(taxonomyData.attr.webpageUrl){
+                    n = taxonomyData.attr.webpageUrl.search(searchValueUC) 
+                }
+                var codeid = ""; 
+                var name = taxonomyData.attr.name 
+                var metaId = taxonomyData.attr.id
+                if(taxonomyData.attr.webpageUrl){
+                    codeid = taxonomyData.attr.webpageUrl.split(":")
+                    codeid = codeid[1]
+                }
+                htmlText += "<ul>"
+                htmlText += '<li><a href="$AUTOLINK[' + metaId + ':p]">' + name + '<\/a>' + ' || ' + name + ' :' + codeid
+                if(taxonomyData.children){
+                    for(var i=0; i<taxonomyData.children.length; i++){
+                        iterativeFunction2(taxonomyData.children[i]);
+                    }
+                    htmlText += "</li></ul>"
+                }
+            } 
+            document.getElementById("writeData").innerHTML = htmlText; 
+        }
+    </script>
+</body>
+</html>

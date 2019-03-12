@@ -1,0 +1,30 @@
+JS Basics 
+
+-Manejo de arreglos 
+var newArray = [];
+
+es posible meter objetos dentro de un array o arrays anidados 
+
+".push" para empujar o meter un parametro dentro de un array. 
+".pop"  para leiminar el ultimo parametro de un array 
+
+
+filter = filtrar // regresa todos los valores que esten dentro de la condicion 
+find = encontrar // solo regresa el primer valo que encuentre 
+
+
+.reverse  = solo ordena en sentido contrario el objeto 
+
+
+
+
+
+
+-Manejo de strings 
+-Logica Booleana 
+
+
+
+
+//Homework 
+Agregar, 

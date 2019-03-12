@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <title>Class #2</title>
+    </head>
+    <body>
+        <div class="container">
+            <h3>Class #2</h3>
+            <input type="button" value="Get Random Pokemon" onclick="getData()">
+
+        </div>
+      
+        <div class="container" id="showData"></div>
+
+        <script type="text/javascript">
+            window.onload = function(){
+               
+            }
+
+            function getData(res){
+                pokemonNumber = Math.floor(Math.random() * 964) + 1;
+                var htmlText = "";
+
+                if(pokemonNumber<=99){
+
+                }
+                
+                var url = "https://pokeapi.co/api/v2/pokemon/" + pokemonNumber
+                fetch(url)
+                .then(res => res.json())
+                .then(res => {
+                    // createData(res);
+                    // console.log(res)
+                    // console.log(res.name)
+                    htmlText += "<br><img src='" + res.sprites.front_default + "'>"
+                    htmlText += "<br><ul><li><strong>Pokemon Number:</strong> " +pokemonNumber +" </li><li><strong>Name:</strong> " + res.name + " </li><li><strong>Weight:</strong> " + res.weight + " </li><li><strong>Type:</strong> " + res.types[0].type.name
+                    
+                    document.getElementById("showData").innerHTML = htmlText; 
+
+                }); 
+            }
+        
+            function createData(){
+                
+            }
+
+
+        </script>
+
+    </body>
+</html>

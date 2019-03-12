@@ -1,0 +1,6 @@
+Objeto: entidad, con 2 caracteristicas principales, 
+contiene propiedades y metodos. 
+
+
+Homework: 
+

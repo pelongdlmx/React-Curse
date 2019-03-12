@@ -1,0 +1,16 @@
+'use strict';
+
+const e = React.createElement;
+
+class LikeButton extends React.Component {
+
+  render() {
+
+    return e(
+      <p>hola</p>
+    );
+  }
+}
+
+const domContainer = document.querySelector('#gralDiv');
+ReactDOM.render(e(LikeButton), domContainer);

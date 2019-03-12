@@ -1,0 +1,137 @@
+/*Arrays*****************************************************************************/
+/*Empty Array Declaration*/
+var newArray = [];
+
+/*Array Example*/
+var countries = ["India", "USA", "UK"];
+console.log(countries.length);
+
+/*Array Example 2 Different Types*/
+var randomStuff = ["India","USA",1,true,false,3.1416];
+console.log(randomStuff);
+
+/*Array Example 3 - Objects OR Arrays within arrays*/
+var complexArray = [["India","USA","UK"], {person: { name: 'Peter' }}];
+console.log(complexArray);
+
+/*Arrays Basic Operations*************************************************************/
+/*Add element at the end*/
+var countries = ["India", "USA", "UK"];
+countries.push("Mexico");
+console.log(countries);
+
+/*Remove element at the end*/
+var countries = ["India", "USA", "UK"];
+countries.pop();
+console.log(countries);
+
+/*Get array size*/
+var countries = ["India", "USA", "UK"];
+var size = countries.length;
+console.log(size);
+
+/*Filtering an array - Example 1*/
+var countries = ["India", "USA", "UK", "Mexico", "Nicaragua"];
+var longNamesOnly = countries.filter(country => country.length > 3);
+console.log(longNamesOnly);
+
+/*Filtering an array - Example 2*/
+var numbers = [10,20,30,40,50,60,7,8,9,44];
+var numbersModTen = numbers.filter(number => number%10 == 0);
+console.log(numbersModTen);
+
+/*Find first element matching a condition*/
+var students = [
+    {name: 'Peter', age: 19},
+    {name: 'Ralph', age: 21},
+    {name: 'Michael', age: 35},
+    {name: 'John', age: 25},
+    {name: 'Andrew', age: 27}
+];
+var betweenTwentyAndThirty = students.find(function(student){
+    return student.age >= 20 && student.age <= 30
+});
+console.log(betweenTwentyAndThirty);
+
+/*Reverse an array order*/
+var countries = ["India", "USA", "UK", "Mexico", "Nicaragua"];
+console.log(countries);
+var reversedCountries = countries.reverse();
+console.log(reversedCountries);
+
+/*Excersice=========================================*/
+var store = ["Headphones","Keyboard","Mouse","Mother Board","Charger","Battery","Monitor","Processor","RAM Memory","Video Card","HDD","Power Supply"];
+var expensiveItems = ["Mother Board","Monitor","Video Card","Power Supply","Processor"];
+console.log('Print cheap Elements out of these two arrays?');
+
+/*String Basic Operations*************************************************************/
+/*Get String length*/
+var smallParagraph = "This is a small paragraph for testing purposes!";
+var size = smallParagraph.length;
+console.log(size);
+
+/*Find position of sub-string within a string*/
+var smallParagraph = "This is a small paragraph for testing purposes!";
+var validString = smallParagraph.indexOf('paragraph');
+var nonValidSubString = smallParagraph.indexOf('this does not exist');
+console.log(validString);
+console.log(nonValidSubString);
+
+/*Find last position of a sub-string within a string*/
+var smallParagraph = "This is a small paragraph for testing purposes!";
+var lastPLetterPosition = smallParagraph.lastIndexOf('p');
+console.log(lastPLetterPosition);
+
+/*Take a portion out of a string based on position*/
+var smallParagraph = "This is a small paragraph for testing purposes!";
+var paragraphPosition = smallParagraph.indexOf('paragraph');
+var fromParagraphToTheEnd = smallParagraph.substr(paragraphPosition,smallParagraph.length);
+console.log(fromParagraphToTheEnd);
+
+/*Replacing values within a string given another string*/
+var smallParagraph = "This is a small paragraph for testing purposes!";
+var removePurposes = smallParagraph.replace("purposes!","");
+console.log(removePurposes);
+
+/*Joins two or more strings*/
+var words = ["Hello"," my"," friends",", this"," is"," a"," good"," example"];
+var joiningWords = words[0] + words[1] + words[2] + words[3] + words[4] + words[5] + words[6] + words[7];
+console.log(joiningWords);
+
+/*Convert a string into an array, given a separator*/
+var technologies = "JavaScript,CSS,PHP,React,Redux,Jest,WebPack";
+var arrayOfTechnologies = technologies.split(",");
+console.log(arrayOfTechnologies);
+
+/*Excersice=========================================*/
+var technologyPool = "JavaScript,React,CSS,React,React,JavaScript,JavaScript,React,React,JavaScript,React,CSS,CSS,React,JavaScript,CSS,JavaScript,CSS,React,JavaScript,PHP,React,PHP,React,PHP,React,PHP,PHP,JavaScript,PHP,PHP,JavaScript,JavaScript,JavaScript,JavaScript,JavaScript,C++,React,React,React,React,React,CSS,CSS,CSS,JavaScript,JavaScript,JavaScript,JavaScript,C++";
+console.log('Print which technology is the most popular one?');
+
+/*Boolean Logic - examples*************************************************************/
+var r1 = 10 > 9; //true
+var r2 = 10 > 10;//false
+
+if(r1)
+    console.log('10 > 9');
+else
+    console.log('10 < 9');
+
+var r3 = 'Hello friends'.length > 'Hello'.length;//true
+console.log(r3);
+
+if(r1 || r2 || r3)
+    console.log('We are super positives');
+else
+    console.log('We are not that positives...');
+
+/*Boolean Logic - Element does not exist***********************************************/
+var variableNumberExists = numberExists ? numberExists : 'DOES NOT EXIST!';
+console.log(variableNumberExists);
+
+var numberExists = 'The variable exists';
+var variableNumberExists = numberExists ? numberExists : 'DOES NOT EXIST!';
+console.log(variableNumberExists);
+
+/*Homework=========================================*/
+console.log('Complete Excersice #1 y #2 \n');
+console.log('Create a simple interface with a form to: 1) Add elements into an array \n2) Print all elements of the array \n3) Purge all duplicated elements from the existing array \n4) Perform a partial search against every element - remove the ones where the search term was found');
