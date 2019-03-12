@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import Clock from 'react-live-clock';
+import NewYorkTimes from './Newyorktimes';
+import ABCNews from './Abcnews';
+import LastWeek from './Lastweek';
+import LastMonth from './Lastmonth';
 
 
 class Body extends Component {
@@ -11,6 +15,10 @@ class Body extends Component {
             <Clock  format={'MMMM Do YYYY'} ticking={true} timezone={'US/Mountain'} />
         </div>
         <div className="row">
+            <NewYorkTimes/>
+            <ABCNews/>
+            <LastWeek/>
+            <LastMonth/>
 
         </div>
       </div>
