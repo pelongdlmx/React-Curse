@@ -16,7 +16,7 @@ code {
 .hero-image {
   background-image: url("./img/background-header.jpg");
   background-color: #cccccc;
-  height: 350px;
+  height: 300px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -39,3 +39,41 @@ code {
 .p-header{
   font-size: 21px;
 }
+
+.clock{
+  text-align: right !important;
+  padding-right: 30px !important;
+    padding-top: 30px !important;
+    font-size: 25px !important; 
+    font-family: 'Nunito', sans-serif;
+}
+.body-content{
+  position: relative !important;
+  text-align: center;
+  padding-top: 20px; 
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #E1DFDF;
+  color: white;
+  text-align: center;
+  height: 200px;
+}
+
+.react-logo{
+  height: 75px;
+}
+.nxp-logo{
+  height: 50px;
+}
+.pt{
+  padding-top: 30px;
+}
+ 
