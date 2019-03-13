@@ -57,7 +57,7 @@ code {
 }
 
 .footer {
-  position: fixed;
+  
   left: 0;
   bottom: 0;
   width: 100%;
@@ -75,5 +75,30 @@ code {
 }
 .pt{
   padding-top: 30px;
+}
+.p-date{
+  font-size: 11px;
+}
+
+.p-description{
+  font-size: 13px;
+}
+
+.p-title{
+  font-family: 'Nunito', sans-serif;
+}
+
+.p-link{
+  font-family: 'Nunito', sans-serif;
+}
+
+.containerNews{
+  padding-top: 60px;
+}
+.img-mailbox2{
+  height: 60px;
+}
+.pb{
+  padding-bottom: 50px;
 }
  

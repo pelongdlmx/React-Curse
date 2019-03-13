@@ -10,8 +10,8 @@ class Footer extends Component {
       <div className="footer">        
         <p>React Training program by Diego Solorzano</p>
         <div className="pt">
-            <img className="react-logo" src={reactLogo}/> 
-            <img className="nxp-logo" src={nxpLogo}/> 
+            <img className="react-logo" src={reactLogo} alt='react-logo'/> 
+            <img className="nxp-logo" src={nxpLogo} alt='nxp-logo'/> 
         </div>
       </div>
     );

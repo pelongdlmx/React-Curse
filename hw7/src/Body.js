@@ -10,16 +10,15 @@ import LastMonth from './Lastmonth';
 class Body extends Component {
   render() {
     return (
-      <div className="container">        
+      <div className="container-fluid">        
         <div className="body-content">
             <Clock  format={'MMMM Do YYYY'} ticking={true} timezone={'US/Mountain'} />
         </div>
-        <div className="row">
+        <div className="row pb">
             <NewYorkTimes/>
             <ABCNews/>
             <LastWeek/>
             <LastMonth/>
-
         </div>
       </div>
     );
