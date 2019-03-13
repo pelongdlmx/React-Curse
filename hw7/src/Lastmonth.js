@@ -23,8 +23,8 @@ class LastMonth extends Component {
     let todayDate = new Date().getTime(); 
      todayDate -= 2592000000; 
      todayDate = new Date(todayDate); 
-    //  let lastmonth = todayDate.toLocaleDateString(); 
-
+     let lastmonth = todayDate.toLocaleDateString(); 
+      console.log(lastmonth)
     return (
       <div className="container">        
          
