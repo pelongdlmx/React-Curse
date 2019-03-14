@@ -37,15 +37,15 @@ class LastMonth extends Component {
   }
 
   render() {
-    let nytJson2 = this.state.nytJson
-    nytJson2.length = 3;
+    let nytJson2 = this.state.nytJson.slice(0, 3)
+    
     let nytData =  nytJson2.map(nytitem => {
       return(
         <div className="col-md-12 pt">
           <Card>
             <Card.Body>
-            <p className="p-title">{nytitem.title}</p>
-            <p className="p-date">{nytitem.publishedAt}</p>
+            <p className="p-title"><a href={nytitem.url} target="_blank" className="p-link-title">{nytitem.title}</a></p>
+            <p className="p-date">{nytitem.publishedAt.slice(0, 10)}</p>
             <p className="p-description">{nytitem.description}</p>
             <a href={nytitem.url} target="_blank" className="p-link">See more</a>
             </Card.Body>

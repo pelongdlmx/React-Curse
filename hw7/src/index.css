@@ -12,11 +12,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+h2{
+  font-size: 28px;
+}
 
 .hero-image {
   background-image: url("./img/background-header.jpg");
   background-color: #cccccc;
-  height: 300px;
+  height: 340px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -29,31 +32,37 @@ code {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: #000;
 }
 
 .img-mailbox{
-  height: 115px; 
+  height: 100px; 
 }
 
 .p-header{
-  font-size: 21px;
+  font-size: 18px;
 }
 
 .clock{
   text-align: right !important;
-  padding-right: 30px !important;
-    padding-top: 30px !important;
-    font-size: 25px !important; 
-    font-family: 'Nunito', sans-serif;
+  font-size: 25px !important; 
+  font-family: 'Nunito', sans-serif;
+  float: right;
+  margin-right: 30px;
+  margin-top: 20px;
 }
 .body-content{
   position: relative !important;
   text-align: center;
   padding-top: 20px; 
   font-family: 'Nunito', sans-serif;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: bold;
   
+}
+
+.p-link-title{
+  color: #000
 }
 
 .footer {
@@ -62,7 +71,7 @@ code {
   bottom: 0;
   width: 100%;
   background-color: #E1DFDF;
-  color: white;
+  color: #000;
   text-align: center;
   height: 200px;
 }
@@ -78,14 +87,16 @@ code {
 }
 .p-date{
   font-size: 11px;
+  font-style: italic;
 }
 
 .p-description{
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .p-title{
   font-family: 'Nunito', sans-serif;
+  font-weight: bold;
 }
 
 .p-link{
@@ -97,8 +108,12 @@ code {
 }
 .img-mailbox2{
   height: 60px;
+  float: left;
 }
 .pb{
   padding-bottom: 50px;
+}
+h3{
+  padding-top: 14px;
 }
  

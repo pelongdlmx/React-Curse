@@ -8,7 +8,7 @@ class Footer extends Component {
   render() {
     return (
       <div className="footer">        
-        <p>React Training program by Diego Solorzano</p>
+        <p className="pt">React Training program by Diego Solorzano</p>
         <div className="pt">
             <img className="react-logo" src={reactLogo} alt='react-logo'/> 
             <img className="nxp-logo" src={nxpLogo} alt='nxp-logo'/> 
