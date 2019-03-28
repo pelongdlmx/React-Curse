@@ -12,3 +12,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.height-flag{
+  height: 160px !important;
+}
+
+.padding-b{
+  padding-bottom: 20px;
+  
+}
+
+.scroll{
+  height: 1050px;
+  overflow-y: scroll;
+  
+}

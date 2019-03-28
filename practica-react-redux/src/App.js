@@ -10,8 +10,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Home/>
+      <div className="App container">
+        <div id="results" className=" scroll">
+          <Home/>
+        </div>
       </div>
     );
   }
