@@ -10,26 +10,33 @@ class ShowInfo extends Component {
       }
 
       render() {
-        const { pokemonInfo } = this.props;
-        
+        const {pokemonInfo} = this.props;
+        let showData = ''; 
         console.log(pokemonInfo)
-        // let showData =  pokemonInfo.map(pItem => {
-        //     return(
-        //       <div className="col-md-12 pt">
-        //         <Card>
-        //           <Card.Body>
-        //           <p className="p-title"> sss</p>
-        //           {/* <p  >{pItem.}</p>
-        //           <p className="p-description">{pItem.description}</p>
-        //           <a href={pItem.url} target="_blank" className="p-link">See more</a> */}
-        //           </Card.Body>
-        //         </Card>
-        //       </div>
-        //     )
-        //   })
+        if(pokemonInfo.length !== undefined){
+          
+            showData =  this.props.pokemonInfo.map((currentValue, index, array) => {
+            return(
+              // <div className="col-md-12 pt">
+              //   <Card>
+              //     <Card.Body>
+              //     <p className="p-title">{currentValue}</p>
+                  
+              //     {/* <p  >{pItem.}</p>
+              //     <p className="p-description">{pItem.description}</p>
+              //     <a href={pItem.url} target="_blank" className="p-link">See more</a> */}
+              //     </Card.Body>
+              //   </Card>
+              // </div>
+              <p></p>
+            )
+          })
+        }
+        // console.log(showData)
+      
         return (
           <div className="App">
-            {/* {showData} */}
+            {showData}
           </div>
         );
       }

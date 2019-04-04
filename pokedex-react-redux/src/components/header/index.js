@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import pokemonImg from '../../img/pokemon-logo.png';
 import nav from 'materialize-css'
 
