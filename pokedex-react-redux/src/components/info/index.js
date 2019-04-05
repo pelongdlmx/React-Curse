@@ -12,7 +12,9 @@ class ShowInfo extends Component {
       render() {
         const {pokemonInfo} = this.props;
         let showData = ''; 
-        console.log(pokemonInfo)
+
+        console.log(pokemonInfo.length)
+
         if(pokemonInfo.length !== undefined){
           
             showData =  this.props.pokemonInfo.map((currentValue, index, array) => {

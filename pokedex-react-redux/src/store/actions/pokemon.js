@@ -30,8 +30,9 @@ export const fetchPokemonData = filter => {
   }
 
   return function(dispatch) {
+    
     let url =
-      "https://pokeapi.co/api/v2/pokemon/?limit=100";
+      "https://pokeapi.co/api/v2/pokemon/?limit=10";
     return axios({ url: url, timeout: 100000 })
       .then(function(response) {
         let results = response.data.results.map((currentValue, index, array) => {
