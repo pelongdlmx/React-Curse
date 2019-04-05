@@ -1,21 +1,13 @@
 import axios from "axios";
 
 const initialState = {
-<<<<<<< HEAD
-    pData: [],
-=======
     pokemonDetailInfo: [],
->>>>>>> 3134a3d7d8cba6c08f3be6a2839279030fc55bac
     error: false
 };
 
 const pokemonDataReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'RECEIVE_RESULTS_POKEMON':
-<<<<<<< HEAD
-            
-            return { ...state, pData: action.payload}     
-=======
         // console.log(action.payload.results.length)
         let pokemonDetailInfo = []
         class Pokemon {
@@ -45,7 +37,6 @@ const pokemonDataReducer = (state = initialState, action) => {
         console.log('fuera de: '+pokemonDetailInfo.length)
         
             return { ...state, pokemonDetailInfo: pokemonDetailInfo }     
->>>>>>> 3134a3d7d8cba6c08f3be6a2839279030fc55bac
         default:
             return state;
     }
