@@ -10,29 +10,31 @@ class ShowInfo extends Component {
       }
 
       render() {
+        
         const {pokemonInfo} = this.props;
-        let showData = ''; 
-        console.log(pokemonInfo)
-        if(pokemonInfo.length !== undefined){
-          
-            showData =  this.props.pokemonInfo.map((currentValue, index, array) => {
-            return(
-              // <div className="col-md-12 pt">
-              //   <Card>
-              //     <Card.Body>
-              //     <p className="p-title">{currentValue}</p>
-                  
-              //     {/* <p  >{pItem.}</p>
-              //     <p className="p-description">{pItem.description}</p>
-              //     <a href={pItem.url} target="_blank" className="p-link">See more</a> */}
-              //     </Card.Body>
-              //   </Card>
-              // </div>
-              <p></p>
-            )
-          })
-        }
-        // console.log(showData)
+        // console.log(this.props.pokemonInfo)
+        // console.log(pokemonInfo); 
+        
+        // console.log(Object.keys(pokemonInfo).length);
+        // let showData =""
+        
+      let showData = pokemonInfo.map((currentValue, index, array) => {
+        return(
+          // <div className="col-md-12 pt">
+          //   <Card>
+          //     <Card.Body>
+          //     <p className="p-title">{currentValue}</p>
+              
+          //     {/* <p  >{pItem.}</p>
+          //     <p className="p-description">{pItem.description}</p>
+          //     <a href={pItem.url} target="_blank" className="p-link">See more</a> */}
+          //     </Card.Body>
+          //   </Card>
+          // </div>
+          <p>{currentValue}</p>
+        )
+      })
+        
       
         return (
           <div className="App">
@@ -40,24 +42,23 @@ class ShowInfo extends Component {
           </div>
         );
       }
-
 }
 
 const mapStateToProps = state => {
     return {
-      pokemonInfo: state.pokemon.pData
+      pokemonInfo: state.pokemon.pokemonDetailInfo
     };
   };
   
-  const mapDispatchToProps = dispatch => {
-    return {
-      fetchPokemonData: () => {
-        dispatch(actions.fetchPokemonData());
-      },
-    };
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchPokemonData: () => {
+      dispatch(actions.fetchPokemonData());
+    },
   };
+};
   
-  export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ShowInfo);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShowInfo);
