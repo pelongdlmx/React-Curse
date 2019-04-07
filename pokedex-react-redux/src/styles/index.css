@@ -123,9 +123,19 @@ h2{
   float: left;
 }
 .pb{
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 h3{
   padding-top: 14px;
+}
+
+.form-control-borderless {
+  border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
  
