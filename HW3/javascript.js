@@ -30,7 +30,7 @@ var checkSelector = () => {
 }
 
 var getData = () => {
-    let url = "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=964"
+    let url = "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=100"
     fetch(url)
     .then(jsonData => jsonData.json())
     .then(jsonData => {

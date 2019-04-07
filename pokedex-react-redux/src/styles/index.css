@@ -46,6 +46,11 @@ h2{
   height: 170px; 
 }
 
+.img-pokemon-card{
+  width: 100px; 
+}
+
+
 .p-header{
   font-size: 18px;
 }
@@ -118,7 +123,7 @@ h2{
   float: left;
 }
 .pb{
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 h3{
   padding-top: 14px;

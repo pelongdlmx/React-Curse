@@ -16,7 +16,8 @@ class Home extends Component{
     render(){
         let users = []; 
         if (this.props.users.data){
-            // console.log(this.props.users.data[0].name)
+            console.log(this.props.users)
+            
             users = this.props.users.data.map((currentValue, index, array) =>{
                 return(
                     // <p>{currentValue.name}</p>

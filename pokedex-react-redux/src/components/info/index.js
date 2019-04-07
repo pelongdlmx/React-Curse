@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import { connect } from "react-redux";
 import { Card  } from 'react-bootstrap';
 import * as actions from "../../store/actions/index.js";
@@ -10,35 +11,36 @@ class ShowInfo extends Component {
       }
 
       render() {
+        let PokData = [];
         
-        const {pokemonInfo} = this.props;
-        // console.log(this.props.pokemonInfo)
-        // console.log(pokemonInfo); 
-        
-        // console.log(Object.keys(pokemonInfo).length);
-        // let showData =""
-        
-      let showData = pokemonInfo.map((currentValue, index, array) => {
-        return(
-          // <div className="col-md-12 pt">
-          //   <Card>
-          //     <Card.Body>
-          //     <p className="p-title">{currentValue}</p>
+        if(this.props.pokemonInfo != 0 ){
+          
+          PokData = this.props.pokemonInfo.data.map((currentValue, index, array) => {
+            return(
+                <div className="col-3 pb" id={index}>
+                  <Card border="secondary">
+                      <Card.Img variant="top" src={currentValue.img} className="img-pokemon-card rounded mx-auto d-block"/>
+                      <Card.Body>
+                      <Card.Text><p><strong>Name:</strong> {currentValue.name.charAt(0).toUpperCase()+currentValue.name.slice(1)}</p></Card.Text>
+                        <Card.Text>
+                          <p>Type: {currentValue.type}<br/>Health: {currentValue.health}<br/>S.A: {currentValue.specialAttack}</p>
+                         
+                        </Card.Text>
+                      </Card.Body>
+                  </Card> 
+              </div>
               
-          //     {/* <p  >{pItem.}</p>
-          //     <p className="p-description">{pItem.description}</p>
-          //     <a href={pItem.url} target="_blank" className="p-link">See more</a> */}
-          //     </Card.Body>
-          //   </Card>
-          // </div>
-          <p>{currentValue}</p>
-        )
-      })
+            )
+            
+          })
+
+        }
         
-      
         return (
-          <div className="App">
-            {showData}
+          <div className="container">
+            <div className="row">
+              {PokData}
+            </div>  
           </div>
         );
       }
@@ -46,7 +48,7 @@ class ShowInfo extends Component {
 
 const mapStateToProps = state => {
     return {
-      pokemonInfo: state.pokemon.pokemonDetailInfo
+      pokemonInfo: state.pokemonDataReducer
     };
   };
   
