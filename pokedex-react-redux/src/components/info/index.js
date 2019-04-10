@@ -15,32 +15,32 @@ class ShowInfo extends Component {
 
       let PokData = [];
       
-      if(this.props.pokemonInfo != 0 ){
-        PokData = this.props.pokemonInfo.data.map((currentValue, index, array) => {
-          return(
-              <div className="col-3 pb" id={index}>
-                <Card border="secondary">
-                    <Card.Img variant="top" src={currentValue.img} className="img-pokemon-card rounded mx-auto d-block"/>
-                    <Card.Body>
-                    <Card.Text><p><strong>Name:</strong> {currentValue.name.charAt(0).toUpperCase()+currentValue.name.slice(1)}</p></Card.Text>
-                      <Card.Text>
-                        <p>Type: {currentValue.type}<br/>
-                        Health: {currentValue.health}<br/>
-                        Special Attack: {currentValue.specialAttack}</p>
-                      </Card.Text>
-                    </Card.Body>
-                </Card> 
-            </div>
-          )
-        })
-      }
+      // if(this.props.pokemonInfo != 0 ){
+      //   PokData = this.props.pokemonInfo.data.map((currentValue, index, array) => {
+      //     return(
+      //         <div className="col-3 pb" id={index}>
+      //           <Card border="secondary">
+      //               <Card.Img variant="top" src={currentValue.img} className="img-pokemon-card rounded mx-auto d-block"/>
+      //               <Card.Body>
+      //               <Card.Text><p><strong>Name:</strong> {currentValue.name.charAt(0).toUpperCase()+currentValue.name.slice(1)}</p></Card.Text>
+      //                 <Card.Text>
+      //                   <p>Type: {currentValue.type}<br/>
+      //                   Health: {currentValue.health}<br/>
+      //                   Special Attack: {currentValue.specialAttack}</p>
+      //                 </Card.Text>
+      //               </Card.Body>
+      //           </Card> 
+      //       </div>
+      //     )
+      //   })
+      // }
       
       return (
         <div className="container">
           <SearchInput/>
-          <div className="row">
+          {/* <div className="row">
             {PokData}
-          </div>  
+          </div>   */}
         </div>
       );
     }

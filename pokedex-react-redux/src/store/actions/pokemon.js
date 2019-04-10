@@ -16,21 +16,21 @@ export const fetchPokemonData = () => {
   }
   return function(dispatch) {
     let url =
-      "https://pokeapi.co/api/v2/pokemon/?limit=300";
+      "https://pokeapi.co/api/v2/pokemon/?limit=964";
     return axios({ url: url, timeout: 100000 })
       .then(function(response) {
-        let results = response.data.results.map((currentValue, index, array) => {
-            let url = currentValue.url
-            return axios({ url: url, timeout: 100000})
-            .then(function(dataPokemon) {
-              var pokemonDetail = dataPokemon.data
-              pokemonDetail = new Pokemon(pokemonDetail.name,pokemonDetail.types[0].type.name,pokemonDetail.stats[5].base_stat,pokemonDetail.stats[2].base_stat, pokemonDetail.sprites.front_default, url)
-              pokemon.push(pokemonDetail)
-              dispatch(receiveResultsPokemon(pokemon));  
-            })
-          })
-          // dispatch(receiveResultsPokemon(response.data.results));    
-        // console.log(Pokemon)
+        // let results = response.data.results.map((currentValue, index, array) => {
+        //     let url = currentValue.url
+        //     return axios({ url: url, timeout: 100000})
+        //     .then(function(dataPokemon) {
+        //       var pokemonDetail = dataPokemon.data
+        //       pokemonDetail = new Pokemon(pokemonDetail.name,pokemonDetail.types[0].type.name,pokemonDetail.stats[5].base_stat,pokemonDetail.stats[2].base_stat, pokemonDetail.sprites.front_default, url)
+        //       pokemon.push(pokemonDetail)
+        //       // dispatch(receiveResultsPokemon(pokemon));  
+        //     })
+        //   })
+          dispatch(receiveResultsPokemon(response.data.results));    
+        // console.log(response.data.results)
       })
       .catch(function(error) {
         dispatch(receiveError(error));
