@@ -3,4 +3,5 @@ import {pokemonDataReducer} from './pokemon';
 
 export default combineReducers({
   pokemonDataReducer
+  
 });

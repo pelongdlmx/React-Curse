@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import { connect } from "react-redux";
-import { Card  } from 'react-bootstrap';
+// import { Card  } from 'react-bootstrap';
 import * as actions from "../../store/actions/index.js";
 import SearchInput from './search.js';
 
@@ -13,7 +12,7 @@ class ShowInfo extends Component {
 
     render() {
 
-      let PokData = [];
+      // let PokData = [];
       
       // if(this.props.pokemonInfo != 0 ){
       //   PokData = this.props.pokemonInfo.data.map((currentValue, index, array) => {

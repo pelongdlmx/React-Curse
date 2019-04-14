@@ -1,6 +1,6 @@
 import React  from 'react';
 import pokemonImg from '../../img/pokemon-logo.png';
-import nav from 'materialize-css'
+// import nav from 'materialize-css'
 
 const Header = () => {
 
