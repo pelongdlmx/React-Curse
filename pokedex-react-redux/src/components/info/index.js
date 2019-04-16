@@ -11,6 +11,7 @@ class ShowInfo extends Component {
       }
 
     render() {
+      const data = this.props.pokemonInfo.data
 
       // let PokData = [];
       
@@ -37,9 +38,7 @@ class ShowInfo extends Component {
       return (
         <div className="container">
           <SearchInput/>
-          {/* <div className="row">
-            {PokData}
-          </div>   */}
+          {data ? <p>ya cargo</p> : <p>sigue cargando</p>}
         </div>
       );
     }

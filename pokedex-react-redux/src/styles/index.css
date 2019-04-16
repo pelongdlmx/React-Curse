@@ -20,7 +20,7 @@ h2{
 .hero-image {
   background-image: url("../img/background-header.jpg");
   background-color: #cccccc;
-  height: 340px;
+  height: 200px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,7 +43,7 @@ h2{
 }
 
 .img-pokemon{
-  height: 170px; 
+  height: 125px; 
 }
 
 .img-pokemon-card{

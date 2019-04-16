@@ -26,8 +26,7 @@ class SearchInput extends Component {
 
         const data = this.props.pokemonInfo.data
         let PokData = []
-        let pokemonDetail = []
-
+        
         function handleClick(e) {
             e.preventDefault();
             let searchValue = document.getElementById('inputS').value
@@ -35,20 +34,15 @@ class SearchInput extends Component {
               PokData = data.map((currentValue, index, array) => {
                 let n = currentValue.name.search(searchValue)
                 if(n !== -1 ){
-                    let url = currentValue.url
-                    return axios({ url: url, timeout: 100000 })
-                    .then(function(dataPokemon) {
-                      PokData = dataPokemon.data
-                      PokData = new Pokemon(PokData.name,PokData.types[0].type.name,PokData.stats[5].base_stat,PokData.stats[2].base_stat, PokData.sprites.front_default)
-                      pokemonDetail.push(PokData)                                  
-                    })
+                  console.log(currentValue.name) 
                 }
               })
-              return(
-                console.log(pokemonDetail)
-              )
             }
+            console.log(PokData)
         }
+
+        //set state 
+
         return(
           <div className="container">
               <div className="row justify-content-center pt pb">
@@ -56,7 +50,7 @@ class SearchInput extends Component {
                       <form className="card card-sm">
                           <div className="card-body row no-gutters align-items-center">
                               <div className="col">
-                                  <input className="form-control form-control-lg form-control-borderless" type="search" placeholder="Search your Favorite Pokemon!" id="inputS"></input>
+                                  <input className="form-control form-control-lg form-control-borderless" type="search" placeholder="Search your Pokemon!" id="inputS"></input>
                               </div>
                               <div className="col-auto">
                                   <button className="btn btn-lg btn-success" type="submit" onClick={handleClick} >Search</button>
@@ -64,10 +58,8 @@ class SearchInput extends Component {
                           </div>
                       </form>
                   </div>    
-              </div>
-              <div className="row">
-                  
-              </div>  
+              </div> 
+              
           </div>
         )
     }
@@ -84,9 +76,6 @@ const mapDispatchToProps = dispatch => {
     fetchPokemonData: () => {
       dispatch(actions.fetchPokemonData());
     },
-    handleClick: () => {
-      dispatch({type: "RECEIVE_DETAIL_POKEMON" })
-    }
   };
 };
   
