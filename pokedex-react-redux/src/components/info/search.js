@@ -8,11 +8,6 @@ import store from "../../store.js";
 export const receiveDetailPokemon = data => { return { type: "RECEIVE_DETAIL_POKEMON", data }}
 
 class SearchInput extends Component {
-    constructor(props) {
-      super(props);
-      
-    }
-    
     componentDidMount() {
         this.props.fetchPokemonData();
       }
@@ -30,7 +25,10 @@ class SearchInput extends Component {
           PokData2.push(currentValue)
         }  
       })
-      console.log(PokData2)
+      return(
+        pokemoDetailData(PokData2)
+        
+      )
     }
     render () {
         //set state 
@@ -55,6 +53,14 @@ class SearchInput extends Component {
     }
 }
 
+export const pokemoDetailData = (data) => {
+  console.log(data)
+  return function(dispatch){
+    
+    dispatch(receiveDetailPokemon(data))
+  }
+}
+
 const mapStateToProps = state => {
     return {
       pokemonInfo: state.pokemonDataReducer
@@ -66,10 +72,13 @@ const mapDispatchToProps = dispatch => {
     fetchPokemonData: () => {
       dispatch(actions.fetchPokemonData());
     },
+    
   };
 };
   
+
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps, 
+  
 )(SearchInput);

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions/index.js";
 import SearchInput from './search.js';
 import LoadingPage from './loading.js';
+import ResultsPokemon from './results.js';
 
 class ShowInfo extends Component {
 
@@ -16,6 +17,7 @@ class ShowInfo extends Component {
       return (
         <div className="container">
           {data ? <SearchInput/> : <LoadingPage/>}
+          {<ResultsPokemon/>}
         </div>
       );
     }

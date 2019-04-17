@@ -9,5 +9,14 @@ export const pokemonDataReducer = (state = [], action) => {
     }
 }
 
+export const pokemonDatailReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'RECEIVE_DETAIL_POKEMON': 
+            return action
+        default:
+            return state;
+    }
+}
+
 
  
