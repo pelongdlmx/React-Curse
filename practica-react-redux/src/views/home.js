@@ -18,7 +18,7 @@ class Home extends Component{
         if (this.props.users.data){
             console.log(this.props.users)
             
-            users = this.props.users.data.map((currentValue, index, array) =>{
+            users = this.props.users.data.map((currentValue, index, array) => {
                 return(
                     // <p>{currentValue.name}</p>
                     <div className="col-3 padding-b">

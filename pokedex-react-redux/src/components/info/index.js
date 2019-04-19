@@ -8,16 +8,18 @@ import ResultsPokemon from './results.js';
 
 class ShowInfo extends Component {
 
-    componentDidMount() {
-        this.props.fetchPokemonData();
-      }
+  componentDidMount() {
+    this.props.fetchPokemonData();
+  }
 
     render() {
       const data = this.props.pokemonInfo.data
+      
+      
       return (
         <div className="container">
           {data ? <SearchInput/> : <LoadingPage/>}
-          {<ResultsPokemon/>}
+          {<ResultsPokemon/> }
         </div>
       );
     }
@@ -25,7 +27,8 @@ class ShowInfo extends Component {
 
 const mapStateToProps = state => {
     return {
-      pokemonInfo: state.pokemonDataReducer
+      pokemonInfo: state.pokemonDataReducer,
+      
     };
   };
   

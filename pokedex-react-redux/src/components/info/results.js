@@ -1,26 +1,48 @@
 import React, { Component } from "react";
 import * as actions from "../../store/actions/index.js";
-import axios from 'axios'
 import { connect } from "react-redux";
-import store from "../../store.js";
-import receiveDetailPokemon from './search'; 
+import { Card  } from 'react-bootstrap';
 
 
 class ResultsPokemon extends Component {
-    constructor(props){
-        super(props)
-    }
 
     render () {
+        
         return(
-          <div className="container">
-            
-          </div>
+            <div className='row justify-content-center pt pb'>
+                {console.log(this.props.pokemonData)}
+            </div>
         )
+         
     }
 }
  
-export default ResultsPokemon; 
+
+const mapStateToProps = state => {
+    return {
+      pokemonData: state.pokemonDatailReducer
+    };
+  };
+  
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchPokemonData: () => {
+      dispatch(actions.fetchPokemonData());
+    },
+    
+    receiveDetailPokemon: data => {
+      dispatch(actions.receiveDetailPokemon(data));
+    }
+    
+  };
+};
+  
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps, 
+  
+)(ResultsPokemon);
 
 
 

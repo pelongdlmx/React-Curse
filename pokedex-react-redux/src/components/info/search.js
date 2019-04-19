@@ -2,38 +2,54 @@ import React, { Component } from "react";
 import * as actions from "../../store/actions/index.js";
 import axios from 'axios'
 import { connect } from "react-redux";
+import pokeballimg from '../../img/pokeball.jpg';
 import store from "../../store.js";
+import ResultsPokemon from './results.js';
+import LoadingPage from './loading.js';
 // import { Card  } from 'react-bootstrap';
 
-export const receiveDetailPokemon = data => { return { type: "RECEIVE_DETAIL_POKEMON", data }}
-
 class SearchInput extends Component {
-    componentDidMount() {
-        this.props.fetchPokemonData();
+   
+    handleClick = (e) => {
+      e.preventDefault();
+      
+      class Pokemon {
+        constructor(name, type, health, specialAttack, img){
+          this.name = name; 
+          this.type = type; 
+          this.health = health; 
+          this.specialAttack = specialAttack; 
+          this.img = img; 
+          this.fav = false
+        }
       }
 
-    handleClick = (e) => {
+      let pokemonDetail = []
+      let PokData2 = ''
       const data = this.props.pokemonInfo.data
-      let PokData2 = []
-      e.preventDefault();
       let searchValue = document.getElementById('inputS').value
-      
-      let PokData = data.map((currentValue, index, array) => {
-        let n = currentValue.name.search(searchValue)
-        if(n !== -1 ){
-          let data = currentValue
-          PokData2.push(currentValue)
-        }  
-      })
-      return(
-        pokemoDetailData(PokData2)
-        
-      )
+
+      let PokData = data.map((currentValue) => {
+          let n = currentValue.name.search(searchValue)
+          if(n !== -1 ){
+            let url = currentValue.url
+            return axios({ url: url, timeout: 100000 })
+            .then(function(dataPokemon) {
+              PokData2 = dataPokemon.data
+              if(PokData2.sprites.front_default === null){
+                PokData2 = new Pokemon(PokData2.name,PokData2.types[0].type.name,PokData2.stats[5].base_stat,PokData2.stats[2].base_stat, {pokeballimg})
+              }else{
+                PokData2 = new Pokemon(PokData2.name,PokData2.types[0].type.name,PokData2.stats[5].base_stat,PokData2.stats[2].base_stat, PokData2.sprites.front_default)
+              }
+              pokemonDetail.push(PokData2)                                  
+                  
+            })
+          }
+          store.dispatch({type: 'RECEIVE_DETAIL_POKEMON', pokemonDetail})  
+        })
     }
     render () {
-        //set state 
         return(
-          <div className="container">
             <div className="row justify-content-center pt pb">
               <div className="col-12 col-md-10 col-lg-8">
                 <form className="card card-sm">
@@ -47,23 +63,18 @@ class SearchInput extends Component {
                   </div>
                 </form>
               </div>    
+              <div>
+               
+              </div>
             </div> 
-          </div>
         )
     }
 }
 
-export const pokemoDetailData = (data) => {
-  console.log(data)
-  return function(dispatch){
-    
-    dispatch(receiveDetailPokemon(data))
-  }
-}
-
 const mapStateToProps = state => {
     return {
-      pokemonInfo: state.pokemonDataReducer
+      pokemonInfo: state.pokemonDataReducer,
+      pokemonD: state.pokemonDatailReducer.data
     };
   };
   
@@ -72,7 +83,6 @@ const mapDispatchToProps = dispatch => {
     fetchPokemonData: () => {
       dispatch(actions.fetchPokemonData());
     },
-    
   };
 };
   
