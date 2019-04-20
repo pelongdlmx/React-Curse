@@ -13,13 +13,12 @@ class ShowInfo extends Component {
   }
 
     render() {
-      const data = this.props.pokemonInfo.data
-      
-      
+      const data = this.props.pokemonInfo
+      const searchData = this.props.searchValue
       return (
         <div className="container">
-          {data ? <SearchInput/> : <LoadingPage/>}
-          {<ResultsPokemon/> }
+          {data.fetched !== false ? <SearchInput/> : <LoadingPage/>}
+          {searchData.fetched !== false? <ResultsPokemon/>: null}
         </div>
       );
     }
@@ -28,6 +27,7 @@ class ShowInfo extends Component {
 const mapStateToProps = state => {
     return {
       pokemonInfo: state.pokemonDataReducer,
+      searchValue: state.pokemonSearch
       
     };
   };

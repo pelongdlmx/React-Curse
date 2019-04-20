@@ -1,2 +1,6 @@
-export { fetchPokemonData, receiveDetailPokemon } from './pokemon';
+export { 
+    fetchPokemonData, 
+    pokemonSearch, 
+    pokemonfiltered 
+} from './pokemon';
 // export { receiveDetailPokemon } from '../../components/info/search'

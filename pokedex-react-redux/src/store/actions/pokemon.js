@@ -12,10 +12,24 @@ export const fetchPokemonData = () => {
       "https://pokeapi.co/api/v2/pokemon/?limit=964";
     return axios({ url: url, timeout: 100000 })
       .then(function(response) {
-        dispatch(receiveResultsPokemon(response.data.results));     
+        dispatch({type: "RECEIVE_RESULTS_START", payload: response.data})
+        dispatch({type: "RECEIVE_RESULTS_FINISH", payload: response.data.results})
       })
       .catch(function(error) {
         dispatch(receiveError(error));
       });
   };
 };
+
+export const pokemonSearch = (pokemonDetail) => {
+  return function(dispatch) {
+    dispatch({type: "RECEIVE_SEARCH_POKEMON", payload: pokemonDetail})
+  }
+}
+
+export const pokemonfiltered = (value) => {
+  return function(dispatch) {
+    
+    dispatch({type: 'RECEIVE_FILTERED_COMPLETE', payload: value})
+  }
+}
