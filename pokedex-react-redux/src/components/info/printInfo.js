@@ -18,7 +18,7 @@ class PrintInfo extends Component {
                     let showInfo = pokInfo.filter.map((currentValue, index) => {
                         return(
                             <div className='row justify-content-center pt pb'>
-                                <p>{currentValue.name, currentValue.index}</p>
+                                <p>{console.log(currentValue.name)}</p>
                             </div>
                         )
                     })
