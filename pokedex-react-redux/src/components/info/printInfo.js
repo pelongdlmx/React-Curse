@@ -10,19 +10,21 @@ import store from "../../store.js";
 class PrintInfo extends Component {
     
     render () {
-        const pokInfo  = this.props.pokemonData
+        // const pokInfo  = this.props.pokemonData
+         console.log('test1', this.props.pokemonData.filter)
+        
          
         return(
             setTimeout(function(){
-                if(pokInfo && pokInfo.filter.length >= 1){
-                    let showInfo = pokInfo.filter.map((currentValue, index) => {
-                        return(
-                            <div className='row justify-content-center pt pb'>
-                                <p>{console.log(currentValue.name)}</p>
-                            </div>
-                        )
-                    })
-                }
+                // if(pokInfo && pokInfo.filter.length >= 1){
+                //     let showInfo = pokInfo.filter.map((currentValue, index) => {
+                //         return(
+                //             <div className='row justify-content-center pt pb'>
+                //                 <p>{console.log(currentValue.name)}</p>
+                //             </div>
+                //         )
+                //     })
+                // }
         
             }, 1000)
             

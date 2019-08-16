@@ -27,7 +27,7 @@ class ResultsPokemon extends Component {
                 }
             }
 
-          if(searchData.fetched != false){
+          if(searchData.fetched !== false){
             showInfo = info.pokemons.map((currentValue, index) => {
               let n = currentValue.name.search(searchData)
               if(n != -1){

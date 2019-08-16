@@ -11,7 +11,6 @@ class SearchInput extends Component {
     handleClick = (e) => {
       e.preventDefault();
       this.props.pokemonSearch(document.getElementById('inputS').value)
-      
     }
     render () {
       
@@ -51,7 +50,6 @@ const mapDispatchToProps = dispatch => {
     },
     pokemonSearch: (searchValue) => {
       dispatch(actions.pokemonSearch(searchValue))
-      
     },
   };
 };
