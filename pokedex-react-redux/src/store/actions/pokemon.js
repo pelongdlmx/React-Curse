@@ -2,8 +2,10 @@ import axios from "axios";
 
 export const receiveResultsPokemon = (data) => { return { type: "RECEIVE_RESULTS_START", data }}
 export const receiveDetailPokemon = (data) => { return { type: "RECEIVE_RESULTS_FINISH", data }}
-export const receiveSearchPokemon = (searchTerm) => { return { type: "RECEIVE_SEARCH_POKEMON", searchTerm }}
+export const receiveSearchPokemon = (inputValue) => { return { type: "RECEIVE_SEARCH_POKEMON", inputValue }}
+export const receiveSearchDetailPokemon = (filter) => { return { type: "RECEIVE_SEARCH_DETAIL_POKEMON", filter }}
 export const receiveError = (error) => { return { type: "RECEIVE_ERROR", error}}
+
 
 
 export const fetchPokemonData = () => {
@@ -14,7 +16,6 @@ export const fetchPokemonData = () => {
       .then(function(response) {
         dispatch(receiveResultsPokemon(response.data))
         dispatch(receiveDetailPokemon(response.data.results))
-        
       })
       .catch(function(error) {
         dispatch(receiveError(error));
@@ -22,14 +23,16 @@ export const fetchPokemonData = () => {
   };
 };
 
-export const pokemonSearch = (searchTerm) => {
+export const pokemonSearch = (inputValue) => {
   return function(dispatch) {
-      dispatch(receiveSearchPokemon(searchTerm)); 
+      dispatch(receiveSearchPokemon(inputValue)); 
   }
 }
 
-export const pokemonfiltered = (value) => {
-  return function(dispatch) {
-    dispatch({type: 'RECEIVE_FILTERED_COMPLETE', payload: value})
-  }
+export const pokemonfiltered = (filter) => {
+   
+    return function(dispatch) {
+      dispatch(receiveSearchDetailPokemon(filter))
+    }
+  
 }

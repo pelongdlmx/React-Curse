@@ -11,9 +11,8 @@ class PrintInfo extends Component {
     
     render () {
         // const pokInfo  = this.props.pokemonData
-         console.log('test1', this.props.pokemonData.filter)
-        
          
+        
         return(
             setTimeout(function(){
                 // if(pokInfo && pokInfo.filter.length >= 1){

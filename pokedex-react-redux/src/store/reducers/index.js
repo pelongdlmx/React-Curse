@@ -4,6 +4,7 @@ import { pokemonDataReducer, pokemonSearchValue, pokemonfiltered } from './pokem
 
 export default combineReducers({
   pokemonDataReducer,
+  // pokemonSearchValue
   
   
 });
