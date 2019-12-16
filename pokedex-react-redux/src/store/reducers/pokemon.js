@@ -40,10 +40,6 @@ export const pokemonDataReducer = (state = initialState, action) => {
             return {
                 ...state, filter: action.filter
             }
-        case 'RECEIVE_SEARCH_POKEMON_FINISH': 
-            return {
-                ...state, searchResults: false
-            }
         default:
             return state;
     }

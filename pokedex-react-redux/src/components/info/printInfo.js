@@ -8,43 +8,34 @@ import store from "../../store.js";
 
 
 class PrintInfo extends Component {
-  constructor(props, context) {
-    super(props, context)
-    this.state = {
-      prevProps: {}, 
-      dataMap: '', 
-    }
-  }
-
-  componentDidUpdate (prevProps) {
-    if(prevProps.pokemonData.filter !== this.props.pokemonData.filter){
-      this.setState ({prevProps: prevProps})
-    }
-  }
     
     render () {
-      let prevInfo = this.state.prevProps.pokemonData
-      let currentProps = this.props.pokemonData
-      let keyword = this.props.pokemonData.inputValue
-      
-      
-
-      // if(currentProps.pokemonDataReducer !== prevInfo){
-
-
-      // }
-      return (
-        <div className="row" id="showData">
-            {}
-        </div>
-      ); 
+        // const pokInfo  = this.props.pokemonData
+         
+        
+        return(
+            setTimeout(function(){
+                // if(pokInfo && pokInfo.filter.length >= 1){
+                //     let showInfo = pokInfo.filter.map((currentValue, index) => {
+                //         return(
+                //             <div className='row justify-content-center pt pb'>
+                //                 <p>{console.log(currentValue.name)}</p>
+                //             </div>
+                //         )
+                //     })
+                // }
+        
+            }, 1000)
+            
+        ); 
     } 
+         
 }
  
 
 const mapStateToProps = state => {
     return {
-      pokemonData: state.pokemonDataReducer, 
+      pokemonData: state.pokemonSearch, 
     };
   };
   

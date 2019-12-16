@@ -3,7 +3,6 @@ import axios from "axios";
 export const receiveResultsPokemon = (data) => { return { type: "RECEIVE_RESULTS_START", data }}
 export const receiveDetailPokemon = (data) => { return { type: "RECEIVE_RESULTS_FINISH", data }}
 export const receiveSearchPokemon = (inputValue) => { return { type: "RECEIVE_SEARCH_POKEMON", inputValue }}
-export const receiveSearchPokemonFinish = (inputValue) => { return { type: "RECEIVE_SEARCH_POKEMON_FINISH", inputValue }}
 export const receiveSearchDetailPokemon = (filter) => { return { type: "RECEIVE_SEARCH_DETAIL_POKEMON", filter }}
 export const receiveError = (error) => { return { type: "RECEIVE_ERROR", error}}
 
@@ -24,13 +23,7 @@ export const fetchPokemonData = () => {
   };
 };
 
-export const pokemonSearchStart = (inputValue) => {
-  return function(dispatch) {
-      dispatch(receiveSearchPokemon(inputValue)); 
-  }
-}
-
-export const pokemonSearchFinish = (inputValue) => {
+export const pokemonSearch = (inputValue) => {
   return function(dispatch) {
       dispatch(receiveSearchPokemon(inputValue)); 
   }
