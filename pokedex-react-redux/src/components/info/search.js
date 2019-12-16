@@ -4,16 +4,22 @@ import { connect } from "react-redux";
 import store from "../../store.js";
 import ResultsPokemon from './results.js';
 import LoadingPage from './loading.js';
+import axios from 'axios'
+import pokeballimg from '../../img/pokeball.jpg';
 // import { Card  } from 'react-bootstrap';
 
 class SearchInput extends Component {
    
     handleClick = (e) => {
       e.preventDefault();
-      this.props.pokemonSearch(document.getElementById('inputS').value)
-    }
-    render () {
+      let inputValue = document.getElementById('inputS').value
+      this.props.pokemonSearchStart(inputValue)
       
+    }
+
+    render () {
+      const info = this.props.pokemonData
+      console.log(info)
         return(
             <div className="row justify-content-center pt pb">
                 <div className="col-12 col-md-10 col-lg-8">
@@ -48,8 +54,11 @@ const mapDispatchToProps = dispatch => {
     fetchPokemonData: () => {
       dispatch(actions.fetchPokemonData());
     },
-    pokemonSearch: (searchValue) => {
-      dispatch(actions.pokemonSearch(searchValue))
+    pokemonSearchStart: (searchValue) => {
+      dispatch(actions.pokemonSearchStart(searchValue))
+    },
+    receiveSearchPokemonFinish: (searchValue) => {
+      dispatch(actions.receiveSearchPokemonFinish(searchValue))
     },
   };
 };
