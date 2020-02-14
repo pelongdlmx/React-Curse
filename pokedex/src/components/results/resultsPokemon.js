@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import * as actions from "../../store/actions/index.js";
 import { connect } from "react-redux";
-import { Card } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Card, CardDeck, Button } from "react-bootstrap";
 
 class ResultsPokemon extends Component {
   constructor(props) {
@@ -15,11 +14,21 @@ class ResultsPokemon extends Component {
 
   componentDidMount() {}
 
+  handleClick(data) {
+    console.log("click boton", data);
+  }
+
   printInfo = (data, index) => {
+    console.log("type: ", data.type);
+
     return (
-      <div className="col-md-3" id={index + 1}>
-        <Card>
-          <Card.Img variant="top" src={data.img} style={{ width: "65%" }} />
+      <CardDeck id={index}>
+        <Card style={{ width: "18rem" }}>
+          <Card.Img
+            variant="top"
+            src={data.img}
+            style={{ width: "150px", display: "block", margin: "auto" }}
+          />
           <Card.Body>
             <Card.Title>{data.name}</Card.Title>
             <Card.Text className="">
@@ -34,10 +43,18 @@ class ResultsPokemon extends Component {
               <strong>Attack: </strong>
               {data.specialAttack}
             </Card.Text>
-            {/* <Button variant="primary">Go somewhere</Button> */}
+            <Card.Footer>
+              <Button
+                onClick={() => this.handleClick(data)}
+                style={{ display: "block", margin: "auto" }}
+                variant="outline-dark"
+              >
+                Add
+              </Button>
+            </Card.Footer>
           </Card.Body>
         </Card>
-      </div>
+      </CardDeck>
     );
   };
 

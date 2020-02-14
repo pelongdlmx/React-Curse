@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import * as actions from "../../store/actions/index.js";
 import { connect } from "react-redux";
 import ResultsPokemon from "./resultsPokemon";
-import pokeballimg from "../../img/pokeball.jpg";
+import pokeballimg from "../../img/not-available_1481220154.png";
 import LoadingPage from "./loading.js";
 
 // import { Card  } from 'react-bootstrap';
@@ -30,16 +30,16 @@ class SearchInput extends Component {
     }
   };
 
-  handleChange = e => {
-    let inputValue = document.getElementById("inputS").value;
-    if (inputValue === "") {
-      this.setState({
-        matchResults: []
-      });
-    } else {
-      this.filterResults(inputValue);
-    }
-  };
+  // handleChange = e => {
+  //   let inputValue = document.getElementById("inputS").value;
+  //   if (inputValue === "") {
+  //     this.setState({
+  //       matchResults: []
+  //     });
+  //   } else {
+  //     this.filterResults(inputValue);
+  //   }
+  // };
 
   filterResults = inputValue => {
     this.setState({
@@ -119,7 +119,7 @@ class SearchInput extends Component {
                   type="search"
                   placeholder="Search your Pokemon!"
                   id="inputS"
-                  onChange={this.handleChange}
+                  // onChange={this.handleChange}
                 ></input>
               </div>
               <div className="col-auto">
