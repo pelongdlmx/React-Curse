@@ -2,27 +2,73 @@ import React, { Component } from "react";
 import * as actions from "../../store/actions/index.js";
 import { connect } from "react-redux";
 import { Card, CardDeck, Button } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 class ResultsPokemon extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      filteredData: []
+      filteredData: [],
+      trainer: false,
+      maxpokemon: 5,
+      pokemonCaptured: []
     };
   }
 
-  componentDidMount() {}
-
   handleClick(data) {
-    console.log("click boton", data);
+    if (this.props.pokemonData.favorite.length < 6) {
+      this.validateResults(data, this.props.pokemonData.favorite);
+    } else {
+      Swal.fire({
+        icon: "error",
+        text: `Your Trainer List is Full!`
+      });
+    }
+  }
+
+  validateResults(newData, oldData) {
+    if (oldData.length === 0) {
+      let newObject = [];
+      newObject.push(newData);
+      this.props.favoritePokemon(newObject);
+      Swal.fire({
+        icon: "success",
+        text: `${newData.name} was added in to your Trainer List`
+      });
+    } else {
+      let match = false;
+      let toAdd = oldData.map((oldDataInfo, index) => {
+        if (newData === oldDataInfo) {
+          this.duplicatedResults(newData);
+          match = true;
+        }
+      });
+      if (match != true) {
+        oldData.push(newData);
+        this.addToFavorites(newData, oldData);
+      }
+    }
+  }
+
+  addToFavorites(name, newData) {
+    this.props.favoritePokemon(newData);
+    Swal.fire({
+      icon: "success",
+      text: `${name.name} was added in to your Trainer List`
+    });
+  }
+
+  duplicatedResults(newData) {
+    Swal.fire({
+      icon: "error",
+      text: `Your already have ${newData.name} on your Trainer List!`
+    });
   }
 
   printInfo = (data, index) => {
-    console.log("type: ", data.type);
-
     return (
-      <CardDeck id={index}>
+      <CardDeck key={index} id={data.id}>
         <Card style={{ width: "18rem" }}>
           <Card.Img
             variant="top"
@@ -76,6 +122,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    favoritePokemon: filtered => {
+      dispatch(actions.favoritePokemon(filtered));
+    },
     pokemonfiltered: infoShow => {
       dispatch(actions.pokemonfiltered(infoShow));
     },

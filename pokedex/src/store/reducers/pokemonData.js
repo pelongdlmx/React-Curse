@@ -5,11 +5,17 @@ const initialState = {
   err: null,
   filter: [],
   inputValue: "",
-  searchResults: false
+  searchResults: false,
+  favorite: []
 };
 
 export const pokemonDataReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "RECEIVE_FAVORITE_POKEMON":
+      return {
+        ...state,
+        favorite: action.data
+      };
     case "RECEIVE_RESULTS_START":
       return {
         ...state,

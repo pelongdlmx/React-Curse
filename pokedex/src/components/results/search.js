@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import ResultsPokemon from "./resultsPokemon";
 import pokeballimg from "../../img/not-available_1481220154.png";
 import LoadingPage from "./loading.js";
+import Swal from "sweetalert2";
 
 // import { Card  } from 'react-bootstrap';
 
@@ -59,7 +60,10 @@ class SearchInput extends Component {
     if (results !== "") {
       this.searchResults(resultsSearch);
     } else {
-      alert(`no hay`);
+      Swal.fire({
+        icon: "error",
+        text: `No results found for: '${inputValue}'`
+      });
       this.setState({
         searching: false
       });
@@ -83,19 +87,21 @@ class SearchInput extends Component {
 
   getPokemonData = async url => {
     class Pokemon {
-      constructor(name, type, health, specialAttack, img) {
+      constructor(id, name, type, health, specialAttack, img) {
         this.name = name;
         this.type = type;
         this.health = health;
         this.specialAttack = specialAttack;
         this.img = img;
         this.fav = false;
+        this.id = id;
       }
     }
     let res = await fetch(url);
     let data = await res.json();
 
     let PokData = new Pokemon(
+      data.order,
       data.name,
       data.types[0].type.name,
       data.stats[5].base_stat,
@@ -154,9 +160,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchPokemonData: () => {
-      dispatch(actions.fetchPokemonData());
-    },
     pokemonSearchStart: searchValue => {
       dispatch(actions.pokemonSearchStart(searchValue));
     },

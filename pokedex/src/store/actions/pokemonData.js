@@ -18,6 +18,15 @@ export const receiveSearchDetailPokemon = filter => {
 export const receiveError = error => {
   return { type: "RECEIVE_ERROR", error };
 };
+export const receiveFavoritePokemon = data => {
+  return { type: "RECEIVE_FAVORITE_POKEMON", data };
+};
+
+export const favoritePokemon = data => {
+  return function(dispatch) {
+    dispatch(receiveFavoritePokemon(data));
+  };
+};
 
 export const fetchPokemonData = () => {
   return function(dispatch) {

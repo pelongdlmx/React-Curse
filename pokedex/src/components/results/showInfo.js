@@ -1,8 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index.js";
 import SearchInput from "./search.js";
 import LoadingPage from "./loading.js";
+import ProfilePage from "../profile/index";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 
 class ShowInfo extends Component {
   componentDidMount() {
@@ -12,9 +15,16 @@ class ShowInfo extends Component {
   render() {
     const data = this.props.pokemonInfo;
     return (
-      <div className="container">
-        {data.fetched !== false ? <SearchInput /> : <LoadingPage />}
-      </div>
+      <Fragment>
+        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
+          <Tab eventKey="home" title="Search">
+            {data.fetched !== false ? <SearchInput /> : <LoadingPage />}
+          </Tab>
+          <Tab eventKey="profile" title="Trainer list">
+            <ProfilePage />
+          </Tab>
+        </Tabs>
+      </Fragment>
     );
   }
 }

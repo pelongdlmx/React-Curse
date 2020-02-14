@@ -2,6 +2,7 @@ export {
   fetchPokemonData,
   pokemonSearchStart,
   pokemonfiltered,
-  receiveSearchPokemonFinish
+  receiveSearchPokemonFinish,
+  favoritePokemon
 } from "./pokemonData";
 // export { receiveDetailPokemon } from '../../components/info/search'
