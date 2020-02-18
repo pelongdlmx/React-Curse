@@ -112,31 +112,33 @@ class ResultsPokemon extends Component {
 
   printInfo = (data, index) => {
     return (
-      <CardDeck key={index} id={data.id}>
-        <Card style={{ width: "18rem" }}>
-          <Card.Img
-            variant="top"
-            src={data.img}
-            style={{ width: "150px", display: "block", margin: "auto" }}
-          />
-          <Card.Body>
-            <Card.Title>{data.name}</Card.Title>
-            <Card.Text>
-              <strong>Type: </strong>
-              {data.type}
-            </Card.Text>
-            <Card.Text>
-              <strong>Health: </strong>
-              {data.health}
-            </Card.Text>
-            <Card.Text>
-              <strong>Attack: </strong>
-              {data.specialAttack}
-            </Card.Text>
-            <Card.Footer>{this.validateAdded(data)}</Card.Footer>
-          </Card.Body>
-        </Card>
-      </CardDeck>
+      <div className="col-3 padding-b" key={index} id={data.id}>
+        <CardDeck>
+          <Card>
+            <Card.Img
+              variant="top"
+              src={data.img}
+              style={{ width: "150px", display: "block", margin: "auto" }}
+            />
+            <Card.Body>
+              <Card.Title>{data.name}</Card.Title>
+              <Card.Text>
+                <strong>Type: </strong>
+                {data.type}
+              </Card.Text>
+              <Card.Text>
+                <strong>Health: </strong>
+                {data.health}
+              </Card.Text>
+              <Card.Text>
+                <strong>Attack: </strong>
+                {data.specialAttack}
+              </Card.Text>
+              <Card.Footer>{this.validateAdded(data)}</Card.Footer>
+            </Card.Body>
+          </Card>
+        </CardDeck>
+      </div>
     );
   };
 

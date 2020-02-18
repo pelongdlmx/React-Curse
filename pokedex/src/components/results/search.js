@@ -28,20 +28,23 @@ class SearchInput extends Component {
       this.setState({
         matchResults: []
       });
-      alert("Enter a search term!");
+      // alert("Enter a search term!");
     }
   };
 
-  // handleChange = e => {
-  //   let inputValue = document.getElementById("inputS").value;
-  //   if (inputValue === "") {
-  //     this.setState({
-  //       matchResults: []
-  //     });
-  //   } else {
-  //     this.filterResults(inputValue);
-  //   }
-  // };
+  handleChange(e) {
+    let inputValue = e.target.value;
+    this.setState({
+      input: inputValue
+    });
+    // if (inputValue === "") {
+    //   this.setState({
+    //     matchResults: []
+    //   });
+    // } else {
+    //   this.filterResults(inputValue);
+    // }
+  }
 
   filterResults = inputValue => {
     this.setState({
@@ -116,39 +119,40 @@ class SearchInput extends Component {
 
   render() {
     return (
-      <div className="row justify-content-center pt pb">
-        <div className="col-12 col-md-10 col-lg-8">
-          <form className="card card-sm">
-            <div className="card-body row no-gutters align-items-center">
-              <div className="col">
-                <input
-                  className="form-control form-control-lg form-control-borderless"
-                  type="search"
-                  placeholder="Search your Pokemon!"
-                  id="inputS"
-                  // onChange={this.handleChange}
-                ></input>
+      <Fragment>
+        <div className="row justify-content-center pt pb">
+          <div className="col-12 col-md-10 col-lg-8">
+            <form className="card card-sm">
+              <div className="card-body row no-gutters align-items-center">
+                <div className="col">
+                  <input
+                    className="form-control form-control-lg form-control-borderless"
+                    type="search"
+                    placeholder="Search your Pokemon!"
+                    id="inputS"
+                    value={this.state.input}
+                    onChange={e => this.handleChange(e)}
+                  ></input>
+                </div>
+                <div className="col-auto">
+                  <button
+                    className="btn btn-lg btn-success"
+                    type="submit"
+                    onClick={e => this.handleClick(e)}
+                  >
+                    <Search style={{ marginTop: "-3px" }} size={25} />
+                  </button>
+                </div>
               </div>
-              <div className="col-auto">
-                <button
-                  className="btn btn-lg btn-success"
-                  type="submit"
-                  onClick={this.handleClick}
-                >
-                  <Search style={{ marginTop: "-3px" }} size={25} />
-                </button>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-        <Fragment>
-          {this.state.searching ? (
-            <LoadingPage />
-          ) : this.state.matchResults.length > 0 ? (
-            <ResultsPokemon data={this.state.matchResults} />
-          ) : null}
-        </Fragment>
-      </div>
+        {this.state.searching ? (
+          <LoadingPage />
+        ) : this.state.matchResults.length > 0 ? (
+          <ResultsPokemon data={this.state.matchResults} />
+        ) : null}
+      </Fragment>
     );
   }
 }
