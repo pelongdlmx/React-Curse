@@ -3,6 +3,8 @@ import * as actions from "../../store/actions/index.js";
 import { connect } from "react-redux";
 import { Card, CardDeck, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
+import IndeterminateCheckBox from "@material-ui/icons/IndeterminateCheckBox";
+import AddBox from "@material-ui/icons/AddBox";
 
 class ResultsPokemon extends Component {
   constructor(props) {
@@ -18,7 +20,7 @@ class ResultsPokemon extends Component {
 
   handleClick(data) {
     if (this.props.pokemonData.favorite.length < 6) {
-      this.validateResults(data, this.props.pokemonData.favorite);
+      this.validateResults(data, this.props.pokemonData.favorite, true);
     } else {
       Swal.fire({
         icon: "error",
@@ -32,6 +34,7 @@ class ResultsPokemon extends Component {
       let newObject = [];
       newObject.push(newData);
       this.props.favoritePokemon(newObject);
+
       Swal.fire({
         icon: "success",
         text: `${newData.name} was added in to your Trainer List`
@@ -39,7 +42,7 @@ class ResultsPokemon extends Component {
     } else {
       let match = false;
       let toAdd = oldData.map((oldDataInfo, index) => {
-        if (newData === oldDataInfo) {
+        if (newData.name === oldDataInfo.name) {
           this.duplicatedResults(newData);
           match = true;
         }
@@ -49,6 +52,47 @@ class ResultsPokemon extends Component {
         this.addToFavorites(newData, oldData);
       }
     }
+  }
+
+  validateAdded(newData) {
+    let oldData = this.props.pokemonData.favorite;
+    let match = false;
+    if (oldData.length === 0) {
+      match = false;
+    } else {
+      let toAdd = oldData.map((oldDataInfo, index) => {
+        if (newData.name === oldDataInfo.name) {
+          match = true;
+        }
+      });
+    }
+    return (
+      <Button
+        onClick={
+          match
+            ? () => this.deleteData(newData)
+            : () => this.handleClick(newData)
+        }
+        style={{ display: "block", margin: "auto" }}
+        variant="outline-dark"
+      >
+        {match ? <IndeterminateCheckBox /> : <AddBox />}
+      </Button>
+    );
+  }
+
+  deleteData(data) {
+    let newData = [];
+    let toAdd = this.props.pokemonData.favorite.map((oldDataInfo, index) => {
+      if (data.name !== oldDataInfo.name) {
+        newData.push(oldDataInfo);
+      }
+    });
+    this.props.favoritePokemon(newData);
+    Swal.fire({
+      icon: "success",
+      text: `${data.name} was deleted from you Trainer List`
+    });
   }
 
   addToFavorites(name, newData) {
@@ -77,7 +121,7 @@ class ResultsPokemon extends Component {
           />
           <Card.Body>
             <Card.Title>{data.name}</Card.Title>
-            <Card.Text className="">
+            <Card.Text>
               <strong>Type: </strong>
               {data.type}
             </Card.Text>
@@ -89,15 +133,7 @@ class ResultsPokemon extends Component {
               <strong>Attack: </strong>
               {data.specialAttack}
             </Card.Text>
-            <Card.Footer>
-              <Button
-                onClick={() => this.handleClick(data)}
-                style={{ display: "block", margin: "auto" }}
-                variant="outline-dark"
-              >
-                Add
-              </Button>
-            </Card.Footer>
+            <Card.Footer>{this.validateAdded(data)}</Card.Footer>
           </Card.Body>
         </Card>
       </CardDeck>

@@ -5,6 +5,7 @@ import ResultsPokemon from "./resultsPokemon";
 import pokeballimg from "../../img/not-available_1481220154.png";
 import LoadingPage from "./loading.js";
 import Swal from "sweetalert2";
+import { Search } from "react-bootstrap-icons";
 
 // import { Card  } from 'react-bootstrap';
 
@@ -134,7 +135,7 @@ class SearchInput extends Component {
                   type="submit"
                   onClick={this.handleClick}
                 >
-                  Search
+                  <Search style={{ marginTop: "-3px" }} size={25} />
                 </button>
               </div>
             </div>
