@@ -48,8 +48,7 @@ class SearchInput extends Component {
 
   filterResults = inputValue => {
     this.setState({
-      input: inputValue,
-      searching: true
+      input: inputValue
     });
     this.props.pokemonSearchStart(inputValue);
     let resultsSearch = [];
@@ -89,6 +88,27 @@ class SearchInput extends Component {
     this.props.pokemonfiltered(allData);
   }
 
+  async initialResults() {
+    let randomNumber = Math.floor(Math.random() * 900);
+
+    const info = this.props.pokemonInfo.initialInfo.slice(
+      randomNumber - 8,
+      randomNumber
+    );
+    const allData = [];
+
+    for (var i = 0; i < info.length; i++) {
+      allData.push(await this.getPokemonData(info[i].url));
+    }
+
+    this.setState({
+      matchResults: allData,
+      searching: false
+    });
+    this.props.receiveSearchPokemonFinish(false);
+    this.props.pokemonfiltered(allData);
+  }
+
   getPokemonData = async url => {
     class Pokemon {
       constructor(id, name, type, health, specialAttack, img) {
@@ -116,6 +136,18 @@ class SearchInput extends Component {
     );
     return PokData;
   };
+
+  componentDidMount() {
+    if (
+      this.props.pokemonInfo.initialInfo &&
+      this.props.pokemonInfo.initialInfo.length > 0
+    ) {
+      this.setState({
+        searching: true
+      });
+      this.initialResults();
+    }
+  }
 
   render() {
     return (

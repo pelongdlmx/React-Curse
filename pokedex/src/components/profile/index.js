@@ -5,6 +5,7 @@ import { Card, CardDeck, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import Delete from "@material-ui/icons/Delete";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import Favorite from "@material-ui/icons/Favorite";
 
 class ProfilePage extends Component {
   deleteData(data) {
@@ -21,14 +22,43 @@ class ProfilePage extends Component {
     });
   }
 
-  favoriteCheck(data) {
-    // let newData = [];
-    // let toAdd = this.props.pokemonInfo.favorite.map((oldDataInfo, index) => {
-    //   if (data.name === oldDataInfo.name) {
-    //     newData.push(oldDataInfo);
-    //   }
-    // });
-    // this.props.favoritePokemon(newData);
+  favoriteCheck(position) {
+    let favoriteCounter = "";
+    let favoritePokemon = "";
+    let favoritePosition = "";
+    let favoriteData = this.props.pokemonInfo.favorite;
+    let toAdd = favoriteData.map((dataFavorite, index) => {
+      if (dataFavorite.fav === true) {
+        favoriteCounter = true;
+        favoritePokemon = dataFavorite.name;
+        favoritePosition = index;
+      }
+    });
+    if (favoriteCounter) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: `${favoritePokemon} is already your favorite Pokemon, you want to replace it? `,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, replace it!"
+      }).then(result => {
+        if (result.value) {
+          this.addFavorite(position, favoriteData, favoritePosition);
+        }
+      });
+    } else {
+      this.addFavorite(position, favoriteData, null);
+    }
+  }
+
+  addFavorite(position, favoriteData, oldPosition) {
+    favoriteData[position].fav = true;
+    if (oldPosition != null) {
+      favoriteData[oldPosition].fav = false;
+    }
+    this.props.favoritePokemon(favoriteData);
   }
 
   printInfo = (data, index) => {
@@ -57,11 +87,11 @@ class ProfilePage extends Component {
               </Card.Text>
               <Card.Footer style={{ display: "block ruby" }}>
                 <Button
-                  // onClick={() => this.favoriteCheck(data)}
+                  onClick={() => this.favoriteCheck(index)}
                   style={{ display: "block", margin: "auto" }}
                   variant="outline-dark"
                 >
-                  <FavoriteBorder />
+                  {data.fav ? <Favorite /> : <FavoriteBorder />}
                 </Button>
                 <Button
                   onClick={() => this.deleteData(data)}
